@@ -1,0 +1,27 @@
+{
+  "name": "projeto-testesenac",
+  "version": "1.0.0",
+  "description": "teste back end senac",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Monkey322/projeto-testeSenac.git"
+  },
+  "author": "Monkey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Monkey322/projeto-testeSenac/issues"
+  },
+  "homepage": "https://github.com/Monkey322/projeto-testeSenac#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-modules": "^1.0.1"
+  },
+  "keywords": [
+    "games"
+  ]
+}
