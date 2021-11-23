@@ -1,11 +1,12 @@
-const games = require("../model/games.json")
+const games = require("../models/games.json")
 
-const getAll = (req, res) => {
+const getAllgames = (req, res) => {
     console.log(req.url);
 
-    res.send(games);
-};
+    res.status(200).send(games)
+}
 
 
-
-module.expots = { getAll };
+module.exports = { 
+    getAllgames,
+ }

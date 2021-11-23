@@ -1,11 +1,17 @@
 const express = require("express");
 const app = express();
 
-const ndex = require("./routes/index");
-const games = require("./require/games");
+app.use(express.json())
 
-app.use((req, res, next) => {
-    console.log("nova requisicao realizada");
+const index = require("./routes/index");
+const games = require("./routes/games");
+
+app.use(function (req, res, next) {
+    res.header("Access-control-Allow-Origin","*")// importado de qualquer lugar por um browser.
+    res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, x-Requested-With, content-type, Accept"
+    )
 
     next()
 });
@@ -13,4 +19,4 @@ app.use((req, res, next) => {
 app.use("/", index);
 app.use("/games", games);
 
-module.export = app;
+module.exports = app;

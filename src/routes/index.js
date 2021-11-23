@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 
-router.get('/', (req, res) => { 
+router.get('/', function(req, res) { 
     res.send({
         titulo: "games para se divertir",
         data: "19/11/2021"
@@ -10,4 +10,4 @@ router.get('/', (req, res) => {
     })
 })
 
-module.exports = router; "" 
+module.exports = router; 
