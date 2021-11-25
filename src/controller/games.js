@@ -24,11 +24,32 @@ const creategames = (req, res) => {
 
     })
 }
+const getgames = (req, res) => {
+    const gamesId = req.params.id
+    const gamesFound = games.find((games) => games.id == gamesId)
+    if (gamesFound) {
+        res.status(200).send(gamesFound)
+    } else {
+        res.status(404).send({ message: "Game não encontrado" })
+    }
+}
 
+const getgamesbyGenero = (req, res) => {
+    const gamesGenero = req.params.Genero
+    const gamesFound = games.find((games) => games.Gênero == gamesGenero)
+    if (gamesFound) {
+        res.status(200).send(gamesFound)
+    } else {
+        res.status(404).send({ message: "Gênero não encontrado" })
+    }
 
+}
 
 module.exports = { 
+    getgamesbyGenero,
+    getgames,
     creategames,
     getAllgames,
+    
     
  }
