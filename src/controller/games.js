@@ -34,19 +34,50 @@ const getgames = (req, res) => {
     }
 }
 
-const getgamesbyGenero = (req, res) => {
-    const gamesGenero = req.params.Genero
-    const gamesFound = games.find((games) => games.Gênero == gamesGenero)
+const getgamesbyNome = (req, res) => {
+    const gamesNome = req.params.Nome
+    const gamesFound = games.find((games) => games.Nome == gamesNome)
     if (gamesFound) {
         res.status(200).send(gamesFound)
     } else {
-        res.status(404).send({ message: "Gênero não encontrado" })
+        res.status(404).send({ message: "Nome não encontrado" })
     }
 
 }
 
+
+const updateGames = (req, res) => {
+    try {
+        const gamesId = req.params.id
+        const gamesToUpdate = req.body  
+
+        const gamesFound = games.find(games => games.id == gamesId)      
+        const gamesIndex = games.indexOf(gamesFound) 
+
+        if (gamesIndex >= 0) { 
+            games.splice(gamesIndex, 1, gamesToUpdate) 
+        } else {
+            res.status(404).send({ message: "Game não encontrado para ser atualizado" })
+        }
+
+        fs.writeFile("./src/models/games.json", JSON.stringify(games), 'utf8', function (err) { 
+            if (err) {
+                res.status(500).send({ message: err }) 
+            } else {
+                console.log("Games atualizado com sucesso!")
+                const gamesUpdated = games.find(games => games.id == gamesId) 
+                res.status(200).send(gamesUpdated) 
+            }
+        })
+    } catch (err) {
+        res.status(500).send({ message: err }) 
+    }
+}
+
+
 module.exports = { 
-    getgamesbyGenero,
+    updateGames,
+    getgamesbyNome,
     getgames,
     creategames,
     getAllgames,
