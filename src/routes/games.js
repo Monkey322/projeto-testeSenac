@@ -7,5 +7,7 @@ router.post("/", controller.creategames);
 router.put("/:id", controller.updateGames);
 router.get("/:id", controller.getgames);
 router.get("/:Nome", controller.getgamesbyNome);
+router.patch("/:id/Atualizado", controller.updateAtualizado);
+router.delete("/:id", controller.deleteGames);
 
 module.exports = router;
